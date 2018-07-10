@@ -188,4 +188,9 @@
         </profile>
     </profiles>
     
+    <modules>
+        <module>jaxrsapi</module>
+        <module>suisrc-core</module>
+        <module>jaxrsapi-three</module>
+    </modules>
 </project>
