@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.suisrc</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.0-Final</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     
     <licenses>
@@ -69,6 +69,12 @@
     </dependencyManagement>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
         <plugins>
             <!-- compiler-plugin -->
             <plugin>
@@ -114,7 +120,7 @@
         </plugins>
     </build>
     
-    <distributionManagement>
+    <!-- <distributionManagement>
         <snapshotRepository>
             <id>oss-maven</id>
             <url>https://oss.sonatype.org/content/repositories/snapshots</url>
@@ -123,9 +129,19 @@
             <id>oss-maven</id>
             <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
         </repository>
+    </distributionManagement> -->
+    <distributionManagement>
+        <snapshotRepository>
+            <id>icgear-maven</id>
+            <url>http://mvn.win0.win/repository/maven-snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>icgear-maven</id>
+            <url>http://mvn.win0.win/repository/maven-releases</url>
+        </repository>
     </distributionManagement>
 
-    <profiles>
+<!--     <profiles>
         <profile>
             <id>release</id>
             <build>
@@ -156,7 +172,7 @@
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-gpg-plugin</artifactId>
                         <version>${version.maven-gpg-plugin}</version>
-                        <!-- <configuration> <skip>true</skip> </configuration> -->
+                        <configuration> <skip>true</skip> </configuration>
                         <executions>
                             <execution>
                                 <id>sign-artifacts</id>
@@ -186,12 +202,13 @@
                 </plugins>
             </build>
         </profile>
-    </profiles>
+    </profiles> -->
     
     <modules>
         <module>jaxrsapi</module>
         <module>suisrc-core</module>
         <module>jaxrsapi-three</module>
+        <module>wildfly-adapter</module>
     </modules>
     
     <name>${project.groupId}:${project.artifactId}</name>
