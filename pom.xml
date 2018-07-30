@@ -208,7 +208,7 @@
         <module>jaxrsapi</module>
         <module>suisrc-core</module>
         <module>jaxrsapi-three</module>
-        <module>wildfly-adapter</module>
+        
     </modules>
     
     <name>${project.groupId}:${project.artifactId}</name>
