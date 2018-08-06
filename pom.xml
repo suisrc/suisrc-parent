@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.suisrc</groupId>
     <artifactId>parent</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     
     <licenses>
@@ -49,6 +49,7 @@
         <version.jdeparser>2.0.2.Final</version.jdeparser>
         <version.swagger-annotations>1.5.13</version.swagger-annotations>
         <version.quarz>2.2.1</version.quarz>
+        <version.javassist>3.19.0-GA</version.javassist>
         <!-- test -->
         <version.junit>4.12</version.junit>
     </properties>
@@ -206,9 +207,10 @@
     
     <modules>
         <module>jaxrsapi</module>
-        <module>suisrc-core</module>
-        <module>jaxrsapi-three</module>
         
+        <module>jaxrsapi-three</module>
+
+        <module>suisrc-parent</module>
     </modules>
     
     <name>${project.groupId}:${project.artifactId}</name>
