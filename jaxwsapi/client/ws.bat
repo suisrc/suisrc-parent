@@ -1,0 +1,1 @@
+wsimport -keep -d target/classes -s src/main/java http://localhost:8080/helloService?wsdl

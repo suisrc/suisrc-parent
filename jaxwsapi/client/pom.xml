@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.suisrc.jaxrsapi</groupId>
+        <artifactId>jaxwsapi-parent</artifactId>
+        <version>1.1.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+    <artifactId>jaxwsapi-client</artifactId>
+    <packaging>jar</packaging>
+
+    <properties>
+        <version.axis2>1.7.8</version.axis2>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.axis2</groupId>
+                <artifactId>axis2</artifactId>
+                <version>1.7.8</version>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.suisrc.core</groupId>
+            <artifactId>suisrc-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-saaj</artifactId>
+            <version>${version.axis2}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-adb</artifactId>
+            <version>${version.axis2}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-transport-local</artifactId>
+            <version>${version.axis2}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-jaxws</artifactId>
+            <version>${version.axis2}</version>
+        </dependency>
+
+        <!-- junit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.axis2</groupId>
+            <artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+            <version>${version.axis2}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <name>${project.groupId}:${project.artifactId}</name>
+
+
+    <build>
+        <!-- To use the plugin goals in your POM or parent POM -->
+        <plugins>
+            <plugin>
+                <groupId>org.apache.axis2</groupId>
+                <artifactId>axis2-wsdl2code-maven-plugin</artifactId>
+                <version>${version.axis2}</version>
+                <executions>
+                    <execution>
+                        <id>wsdl2code</id>
+                        <goals>
+                            <goal>wsdl2code</goal>
+                        </goals>
+                        <configuration>
+                            <wsdlFile>http://localhost:8080/api?wsdl</wsdlFile>
+                            <outputDirectory>./</outputDirectory>
+                            <targetSourceFolderLocation>src/main/java</targetSourceFolderLocation>
+                            <skipBuildXML>true</skipBuildXML>
+                            <unwrap>true</unwrap>
+                            <namespaceURIs>
+                                <namespaceURI>
+                                    <uri>http://tempurl.org</uri>
+                                    <packageName>com.suisrc.jaxwsapi.service.szsjjjd</packageName>
+                                </namespaceURI>
+                            </namespaceURIs>
+                            <!-- <unpackClasses>true</unpackClasses> -->
+                            <!-- <databindingName>xmlbeans</databindingName> -->
+                            <overWrite>true</overWrite>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!-- <plugin> <groupId>org.apache.axis2</groupId> <artifactId>axis2-repo-maven-plugin</artifactId> 
+                <version>${version.axis2}</version> <executions> <execution> <id>create-repository</id> 
+                <goals> <goal>create-repository</goal> </goals> </execution> </executions> 
+                </plugin> -->
+        </plugins>
+    </build>
+</project>
